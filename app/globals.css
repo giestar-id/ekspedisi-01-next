@@ -1,0 +1,365 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #f32802;
+  --color-brand-dark: #d92300;
+  --color-ink: #141418;
+  --font-sans: "Inter", system-ui, ui-sans-serif, sans-serif;
+}
+
+/* ---------- Base ---------- */
+html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Skip layout/paint work for sections far below the first viewport. */
+section:not(#home),
+footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+::selection {
+  background: #f32802;
+  color: #ffffff;
+}
+
+section[id],
+footer {
+  scroll-margin-top: 80px;
+}
+
+/* ---------- Mobile sidebar ---------- */
+#mobile-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  width: 280px;
+  max-width: 80vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 100;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  padding-top: 72px !important;
+  background-color: #ffffff !important;
+}
+
+#mobile-panel.mobile-open {
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+#mobile-overlay {
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 65 !important;
+}
+
+#mobile-overlay.overlay-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Hero full-bleed on mobile */
+#home {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+#site-nav.nav-solid {
+  color: #141418;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 rgba(20, 20, 24, 0.07);
+}
+
+/* ---------- Mask lines ---------- */
+.mask-wrap {
+  overflow: hidden;
+  padding-top: 0.06em;
+  margin-top: -0.06em;
+}
+
+.mask-line {
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+  will-change: transform;
+}
+
+/* will-change is useful during motion, but costly when retained for the
+   entire page. Limit the compositor hint to the animated hero only. */
+section:not(#home) .mask-line {
+  will-change: auto;
+}
+
+.num-outline {
+  color: transparent;
+  -webkit-text-stroke: 2px #f32802;
+}
+
+@supports not (-webkit-text-stroke: 1px black) {
+  .num-outline {
+    color: #f32802;
+  }
+}
+
+/* ---------- Hero cue ---------- */
+@keyframes cue-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-cue i {
+    animation: cue-bounce 1.8s ease-in-out infinite;
+  }
+}
+
+/* ---------- Stats slant ---------- */
+.stats-slant-group {
+  transform: skewX(3.9deg);
+}
+
+.stats-slant-group .skew-stat {
+  transform: skewX(-3.9deg);
+  position: relative;
+  padding: 10px 18px;
+  z-index: 1;
+}
+
+.stats-slant-group .skew-stat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 10px;
+  z-index: -1;
+}
+
+.stats-slant-group .skew-stat:nth-child(1) {
+  right: 0px;
+}
+
+.stats-slant-group .skew-stat:nth-child(2) {
+  right: 8px;
+}
+
+.stats-slant-group .skew-stat:nth-child(3) {
+  right: 16px;
+}
+
+.stats-slant-group .skew-stat:nth-child(4) {
+  right: 24px;
+}
+
+/* ---------- Advantages bar ---------- */
+#advantages-bar {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  gap: 20px;
+  padding: 0 4px;
+}
+
+#advantages-bar::-webkit-scrollbar {
+  display: none;
+}
+
+#advantages-bar .adv-slide {
+  flex: 0 0 calc(100% - 16px);
+  min-height: 80px;
+  scroll-snap-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@media (min-width: 640px) {
+  #advantages-bar {
+    display: flex;
+    overflow-x: visible;
+    gap: 0;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  #advantages-bar .adv-slide {
+    flex: 1;
+    background: transparent;
+    backdrop-filter: none;
+    border-radius: 0;
+    border: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  #advantages-bar .adv-slide:last-child {
+    border-right: none;
+  }
+}
+
+/* ---------- Step cards ---------- */
+.step-card {
+  border-bottom: 1px solid #e5e7eb;
+  border-radius: 0;
+}
+
+.step-card:first-child {
+  border-radius: 16px 16px 0 0;
+}
+
+.step-card:last-child {
+  border-radius: 0 0 16px 16px;
+  border-bottom: none;
+}
+
+.step-card.active {
+  border-bottom: none;
+}
+
+.step-card.active + .step-card {
+  border-top: none;
+}
+
+.step-card .step-overlay {
+  transform: translateY(0);
+}
+
+.step-card.active .step-overlay {
+  transform: translateY(-100%);
+}
+
+.step-card .step-content h3,
+.step-card .step-content p {
+  color: #141418;
+}
+
+.step-card .step-content .step-num {
+  -webkit-text-stroke: 2px #f32802;
+  color: transparent;
+}
+
+.step-card.active .step-content h3,
+.step-card.active .step-content p {
+  color: white;
+}
+
+.step-card.active .step-content .step-num {
+  -webkit-text-stroke: 0;
+  color: #f32802;
+}
+
+/* ---------- Accordion ---------- */
+.accordion-item {
+  background: rgba(243, 40, 2, 0.85);
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 0;
+}
+
+.accordion-item:first-child {
+  border-radius: 16px 16px 0 0;
+}
+
+.accordion-item:last-child {
+  border-radius: 0 0 16px 16px;
+  border-bottom: none;
+}
+
+.accordion-item .accordion-trigger h3,
+.accordion-item .accordion-trigger > i {
+  color: white !important;
+}
+
+.accordion-item .accordion-trigger .accordion-icon {
+  color: white !important;
+}
+
+.accordion-item .accordion-trigger .grid {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 200px;
+  opacity: 1;
+}
+
+.accordion-item.active .accordion-icon {
+  transform: rotate(45deg);
+}
+
+.accordion-item.active {
+  background: white;
+  border-radius: 0 !important;
+  border-bottom: none !important;
+  margin: 0;
+}
+
+.accordion-item.active .accordion-trigger .grid {
+  background: rgba(243, 40, 2, 0.1) !important;
+  color: #f32802 !important;
+}
+
+.accordion-item.active .accordion-trigger h3 {
+  color: #141418 !important;
+}
+
+.accordion-item.active .accordion-trigger .accordion-icon {
+  color: #141418 !important;
+}
+
+.accordion-item.active + .accordion-item {
+  border-top: none;
+}
+
+.accordion-item.active:first-child {
+  border-radius: 16px 16px 0 0 !important;
+  border-bottom-color: transparent !important;
+}
+
+.accordion-item.active:last-child {
+  border-radius: 0 0 16px 16px !important;
+  border-bottom: none !important;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
