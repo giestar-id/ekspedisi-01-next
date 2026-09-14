@@ -105,10 +105,11 @@ export default function Hero() {
         <Image
           src={POSTER_SRC}
           alt=""
-          fill
+          width={1920}
+          height={1080}
           priority
           sizes="100vw"
-          className="object-cover"
+          className="intrinsic-cover"
           onLoad={() => setPosterReady(true)}
         />
 

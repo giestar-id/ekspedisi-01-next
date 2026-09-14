@@ -19,16 +19,24 @@ body {
   padding: 0;
 }
 
-/* Skip layout/paint work for sections far below the first viewport. */
-section:not(#home),
-footer {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 900px;
-}
-
 ::selection {
   background: #f32802;
   color: #ffffff;
+}
+
+/* Preserve the bitmap's intrinsic aspect ratio while the overflow-hidden
+   parent performs the visual crop. This avoids stretching fill images. */
+.intrinsic-cover {
+  position: absolute;
+  width: auto !important;
+  height: auto !important;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: none !important;
+  inset: auto !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%);
 }
 
 section[id],

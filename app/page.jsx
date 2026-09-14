@@ -205,9 +205,10 @@ export default function Home() {
         <Image
           src="/media/containers.jpg"
           alt=""
-          fill
+          width={1024}
+          height={960}
           sizes="100vw"
-          className="object-cover"
+          className="intrinsic-cover"
         />
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
@@ -319,24 +320,32 @@ export default function Home() {
                 num: "01",
                 title: "Order",
                 img: "/media/01.jpg",
+                width: 1405,
+                height: 343,
                 desc: "Initiate your shipment seamlessly through our integrated client portal or direct communication channels.",
               },
               {
                 num: "02",
                 title: "Pickup",
                 img: "/media/02.jpg",
+                width: 1405,
+                height: 349,
                 desc: "Our fleet is deployed with precision timing to securely collect and process your assets.",
               },
               {
                 num: "03",
                 title: "Ship",
                 img: "/media/03.jpg",
+                width: 1405,
+                height: 361,
                 desc: "Your cargo is mobilized across our optimized network, providing you with continuous transit visibility.",
               },
               {
                 num: "04",
                 title: "Receive",
                 img: "/media/04.jpg",
+                width: 1405,
+                height: 391,
                 desc: "Final mile execution is completed flawlessly, accompanied by immediate, verified proof of delivery.",
               },
             ].map((step) => (
@@ -347,9 +356,10 @@ export default function Home() {
                 <Image
                   src={step.img}
                   alt=""
-                  fill
-                  sizes="(min-width: 1280px) 80rem, 100vw"
-                  className="object-cover"
+                  width={step.width}
+                  height={step.height}
+                  sizes="(min-width: 1280px) 1280px, calc(100vw - 48px)"
+                  className="intrinsic-cover"
                 />
                 <div className="step-overlay absolute inset-0 z-10 bg-white transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]" />
                 <div className="step-content relative z-20 p-8">
