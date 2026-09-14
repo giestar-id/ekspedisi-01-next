@@ -108,7 +108,8 @@ export default function Hero() {
           width={1920}
           height={1080}
           priority
-          sizes="100vw"
+          sizes="(min-aspect-ratio: 16/9) 100vw, 178vh"
+          quality={65}
           className="intrinsic-cover"
           onLoad={() => setPosterReady(true)}
         />
@@ -136,7 +137,7 @@ export default function Hero() {
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-4 pt-32 md:pb-8">
         <div className="flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-end">
           <div className="max-w-3xl">
-            <h1 className="text-4xl font-medium leading-[1.05] tracking-tight text-white sm:text-[3.25rem] lg:text-[4rem]">
+            <h1 className="min-h-[4.8rem] text-4xl font-medium leading-[1.05] tracking-tight text-white sm:min-h-[6.9rem] sm:text-[3.25rem] lg:min-h-[8.5rem] lg:text-[4rem]">
               <span className="mask-wrap block">
                 <span className="mask-line block">Unrivaled logistics.</span>
               </span>
