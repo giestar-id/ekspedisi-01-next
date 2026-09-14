@@ -119,8 +119,11 @@ export default function ClientEffects() {
       }
 
       // Hide ONLY elements below the viewport when the page opens.
-      items.forEach((it) => {
-        if (!isInView(it.el, 0)) {
+      // Read all geometry first, then mutate styles. Interleaving a rect read
+      // with gsap.set for every element forces repeated synchronous layouts.
+      const initiallyVisible = items.map((it) => isInView(it.el, 0));
+      items.forEach((it, index) => {
+        if (!initiallyVisible[index]) {
           if (it.mask) {
             gsap.set(it.el, { yPercent: 115 });
           } else {

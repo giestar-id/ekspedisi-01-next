@@ -2,6 +2,7 @@ import Image from "next/image";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import DeferredClientEffects from "./components/DeferredClientEffects";
+import Icon from "./components/Icon";
 
 export default function Home() {
   return (
@@ -142,32 +143,32 @@ export default function Home() {
           <div data-reveal-group className="mt-14 flex flex-col">
             {[
               {
-                icon: "ph-truck",
+                icon: "truck",
                 title: "Land Trucking",
                 desc: "Robust LTL & FTL capabilities with optimized intercity routing, bridging major economic hubs to remote frontiers.",
               },
               {
-                icon: "ph-boat",
+                icon: "boat",
                 title: "Sea Freight FCL & LCL",
                 desc: "Scalable maritime freight solutions designed for maximum cost-efficiency and reliable inter-island transit.",
               },
               {
-                icon: "ph-airplane-takeoff",
+                icon: "airplane",
                 title: "Air Cargo",
                 desc: "Premium air freight for time-critical and high-value shipments, leveraging daily departures from major aviation hubs.",
               },
               {
-                icon: "ph-warehouse",
+                icon: "warehouse",
                 title: "Warehousing",
                 desc: "State-of-the-art storage facilities integrated with advanced inventory management. Streamline your distribution strategy.",
               },
               {
-                icon: "ph-lightning",
+                icon: "lightning",
                 title: "Same-Day Express",
                 desc: "Hyper-expedited same-day transit for your most urgent deliverables.",
               },
               {
-                icon: "ph-crane",
+                icon: "crane",
                 title: "Project Cargo",
                 desc: "Bespoke logistical engineering for oversized industrial machinery, encompassing full permit acquisition and escort coordination.",
               },
@@ -178,12 +179,12 @@ export default function Home() {
               >
                 <button className="accordion-trigger flex w-full items-center gap-5 p-6 text-left">
                   <div className="grid size-12 shrink-0 place-items-center rounded-xl bg-brand/10 text-2xl text-brand">
-                    <i className={`ph ${svc.icon}`} />
+                    <Icon name={svc.icon} />
                   </div>
                   <h3 className="flex-1 text-xl font-bold text-ink">
                     {svc.title}
                   </h3>
-                  <i className="ph ph-plus accordion-icon text-xl text-zinc-400 transition-transform duration-300" />
+                  <Icon name="plus" className="accordion-icon text-xl text-zinc-400 transition-transform duration-300" />
                 </button>
                 <div className="accordion-content">
                   <p className="px-6 pb-6 text-sm leading-relaxed text-zinc-500">
@@ -231,7 +232,7 @@ export default function Home() {
         <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-1 flex-col px-6">
           <div id="advantages-bar" className="mt-auto sm:mx-0">
             <div className="adv-slide active flex flex-1 items-center gap-3 p-5">
-              <i className="ph-bold ph-seal-check shrink-0 text-2xl text-brand" />
+              <Icon name="check" className="text-2xl text-brand" />
               <div>
                 <h4 className="text-sm font-bold text-white">
                   Real-Time Tracking
@@ -243,7 +244,7 @@ export default function Home() {
               </div>
             </div>
             <div className="adv-slide flex flex-1 items-center gap-3 p-5">
-              <i className="ph-bold ph-shield-check shrink-0 text-2xl text-brand" />
+              <Icon name="shield" className="text-2xl text-brand" />
               <div>
                 <h4 className="text-sm font-bold text-white">
                   Full Cargo Insurance
@@ -255,7 +256,7 @@ export default function Home() {
               </div>
             </div>
             <div className="adv-slide flex flex-1 items-center gap-3 p-5">
-              <i className="ph-bold ph-headset shrink-0 text-2xl text-brand" />
+              <Icon name="headset" className="text-2xl text-brand" />
               <div>
                 <h4 className="text-sm font-bold text-white">24/7 Support</h4>
                 <p className="mt-1 text-xs leading-relaxed text-white/70">
@@ -265,7 +266,7 @@ export default function Home() {
               </div>
             </div>
             <div className="adv-slide flex flex-1 items-center gap-3 p-5">
-              <i className="ph-bold ph-globe-hemisphere-west shrink-0 text-2xl text-brand" />
+              <Icon name="globe" className="text-2xl text-brand" />
               <div>
                 <h4 className="text-sm font-bold text-white">
                   Own Fleet &amp; Warehouses
@@ -394,7 +395,7 @@ export default function Home() {
             <div className="space-y-6">
               <a href="tel:+6281210002026" className="group flex items-center gap-4">
                 <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-brand/10 text-2xl text-brand transition group-hover:bg-brand group-hover:text-white">
-                  <i className="ph ph-phone" />
+                  <Icon name="phone" />
                 </span>
                 <span>
                   <span className="block text-sm font-medium text-zinc-400">
@@ -407,7 +408,7 @@ export default function Home() {
               </a>
               <a href="mailto:halo@express.id" className="group flex items-center gap-4">
                 <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-brand/10 text-2xl text-brand transition group-hover:bg-brand group-hover:text-white">
-                  <i className="ph ph-envelope-simple" />
+                  <Icon name="envelope" />
                 </span>
                 <span>
                   <span className="block text-sm font-medium text-zinc-400">
@@ -418,7 +419,7 @@ export default function Home() {
               </a>
               <div className="flex items-center gap-4">
                 <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-brand/10 text-2xl text-brand">
-                  <i className="ph ph-map-pin" />
+                  <Icon name="map-pin" />
                 </span>
                 <span>
                   <span className="block text-sm font-medium text-zinc-400">
@@ -436,7 +437,7 @@ export default function Home() {
               className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-7 py-4 text-base font-medium text-white transition hover:bg-brand-dark active:scale-[0.98]"
             >
               Contact Us
-              <i className="ph-bold ph-arrow-up-right text-lg" />
+              <Icon name="arrow-up-right" className="text-lg" />
             </a>
             <p className="mt-4 text-center text-xs font-medium text-zinc-400">
               Expect a response within 15 minutes during business hours.
@@ -516,21 +517,21 @@ export default function Home() {
                   aria-label="Instagram"
                   className="grid size-10 place-items-center rounded-full border border-white/15 text-lg transition hover:border-brand hover:bg-brand hover:text-white"
                 >
-                  <i className="ph ph-instagram-logo" />
+                  <Icon name="instagram" />
                 </a>
                 <a
                   href="#"
                   aria-label="LinkedIn"
                   className="grid size-10 place-items-center rounded-full border border-white/15 text-lg transition hover:border-brand hover:bg-brand hover:text-white"
                 >
-                  <i className="ph ph-linkedin-logo" />
+                  <Icon name="linkedin" />
                 </a>
                 <a
                   href="#"
                   aria-label="WhatsApp"
                   className="grid size-10 place-items-center rounded-full border border-white/15 text-lg transition hover:border-brand hover:bg-brand hover:text-white"
                 >
-                  <i className="ph ph-whatsapp-logo" />
+                  <Icon name="whatsapp" />
                 </a>
               </div>
             </div>
@@ -567,7 +568,7 @@ export default function Home() {
             aria-label="Close menu"
             className="grid size-10 place-items-center rounded-full text-xl text-zinc-500 transition hover:bg-zinc-100"
           >
-            <i className="ph ph-x" />
+            <Icon name="x" />
           </button>
         </div>
         <nav className="flex flex-1 flex-col px-6 pt-4">
@@ -575,28 +576,28 @@ export default function Home() {
             href="#about"
             className="mobile-link flex items-center gap-3 border-b border-zinc-50 py-3.5 text-base font-medium text-zinc-700 transition hover:text-brand"
           >
-            <i className="ph ph-info text-lg text-zinc-400" />
+            <Icon name="info" className="text-lg text-zinc-400" />
             About
           </a>
           <a
             href="#services"
             className="mobile-link flex items-center gap-3 border-b border-zinc-50 py-3.5 text-base font-medium text-zinc-700 transition hover:text-brand"
           >
-            <i className="ph ph-package text-lg text-zinc-400" />
+            <Icon name="package" className="text-lg text-zinc-400" />
             Services
           </a>
           <a
             href="#advantages"
             className="mobile-link flex items-center gap-3 border-b border-zinc-50 py-3.5 text-base font-medium text-zinc-700 transition hover:text-brand"
           >
-            <i className="ph ph-seal-check text-lg text-zinc-400" />
+            <Icon name="check" className="text-lg text-zinc-400" />
             Advantages
           </a>
           <a
             href="#process"
             className="mobile-link flex items-center gap-3 border-b border-zinc-50 py-3.5 text-base font-medium text-zinc-700 transition hover:text-brand"
           >
-            <i className="ph ph-steps text-lg text-zinc-400" />
+            <Icon name="steps" className="text-lg text-zinc-400" />
             Process
           </a>
         </nav>
@@ -605,7 +606,7 @@ export default function Home() {
             href="#contact"
             className="mobile-link flex w-full items-center justify-center gap-2 rounded-full bg-brand px-5 py-3.5 text-base font-medium text-white transition hover:bg-brand-dark active:scale-[0.98]"
           >
-            <i className="ph ph-phone text-lg" />
+            <Icon name="phone" className="text-lg" />
             Contact Us
           </a>
         </div>

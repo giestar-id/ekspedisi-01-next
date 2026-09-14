@@ -22,12 +22,6 @@ export default function RootLayout({ children }) {
     <html lang="en" className={inter.className}>
       <body className="bg-white font-sans text-ink antialiased">
         {children}
-        {/* Local icon fonts instead of render-blocking unpkg CDN */}
-        <link
-          rel="stylesheet"
-          href="/phosphor/phosphor.css"
-          precedence="default"
-        />
       </body>
     </html>
   );

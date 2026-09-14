@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Icon from "./Icon";
 
 export default function Navbar() {
   return (
@@ -61,8 +62,8 @@ export default function Navbar() {
           aria-expanded="false"
           className="grid size-11 place-items-center rounded-full text-2xl lg:hidden"
         >
-          <i className="ph ph-list" id="icon-open" />
-          <i className="ph ph-x hidden" id="icon-close" />
+          <Icon name="list" id="icon-open" />
+          <Icon name="x" className="hidden" id="icon-close" />
         </button>
       </div>
     </nav>

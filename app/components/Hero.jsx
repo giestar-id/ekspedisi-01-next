@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Icon from "./Icon";
 
 const POSTER_SRC = "/media/hero-poster-opt.jpg";
 const VIDEO_SRC = "/media/bg-vidio.mp4";
@@ -36,7 +37,11 @@ export default function Hero() {
     // Keep the video completely out of the initial network queue. The poster
     // gets the bandwidth first; video loading begins when the browser is idle.
     let idleId;
-    const startVideoLoad = () => setShouldLoadVideo(true);
+    let delayId;
+    const startVideoLoad = () => {
+      // Give LCP, hydration, and critical fonts a quiet network window first.
+      delayId = window.setTimeout(() => setShouldLoadVideo(true), 2500);
+    };
 
     if ("requestIdleCallback" in window) {
       idleId = window.requestIdleCallback(startVideoLoad, { timeout: 1500 });
@@ -50,6 +55,7 @@ export default function Hero() {
       } else {
         window.clearTimeout(idleId);
       }
+      window.clearTimeout(delayId);
     };
   }, [posterReady]);
 
@@ -147,7 +153,7 @@ export default function Hero() {
               >
                 Start Shipping
                 <span className="grid size-10 place-items-center rounded-full bg-white text-brand transition-transform duration-300 group-hover:rotate-45">
-                  <i className="ph-bold ph-arrow-up-right text-lg" />
+                  <Icon name="arrow-up-right" className="text-lg" />
                 </span>
               </a>
               <a
@@ -160,7 +166,7 @@ export default function Hero() {
           </div>
 
           <div className="hero-sub w-full rounded-2xl border border-white/15 bg-white/10 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-md sm:max-w-sm lg:w-auto lg:max-w-xs">
-            <i className="ph-bold ph-package mb-3 block text-2xl text-brand" />
+            <Icon name="package" className="mb-3 block text-2xl text-brand" />
             <p className="text-sm font-normal leading-relaxed text-white/80 md:text-base">
               Empowering your supply chain with seamless, end-to-end logistics
               solutions across the Indonesian archipelago.
