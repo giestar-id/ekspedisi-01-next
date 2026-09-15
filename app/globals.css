@@ -19,6 +19,12 @@ body {
   padding: 0;
 }
 
+/* SVG icons include an inline-block utility. Ensure the menu close icon stays
+   hidden until ClientEffects opens the mobile sidebar. */
+svg.hidden {
+  display: none;
+}
+
 ::selection {
   background: #f32802;
   color: #ffffff;
